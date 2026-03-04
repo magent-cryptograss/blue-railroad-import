@@ -95,6 +95,13 @@ def update_submission_cid(
             'ipfs_cid',
             ipfs_cid,
         )
+        # Add status=proposed to satisfy bot verification requirements
+        updated_content, status_changed = update_submission_field(
+            updated_content,
+            'status',
+            'proposed',
+        )
+        was_changed = was_changed or status_changed
     except ValueError as e:
         return SaveResult(page_title, 'error', str(e))
 
@@ -287,13 +294,14 @@ def update_submission_token_ids(
             token_ids_str,
         )
 
-        # Also update status to Minted if we have tokens
+        # Add status=proposed to satisfy bot verification requirements
+        # (Human reviewer can change to 'Minted' after verification)
         changed2 = False
         if token_ids:
             updated_content, changed2 = update_submission_field(
                 updated_content,
                 'status',
-                'Minted',
+                'proposed',
             )
 
     except ValueError as e:

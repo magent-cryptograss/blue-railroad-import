@@ -184,8 +184,11 @@ def generate_leaderboard_content(
             lines.append("")
 
     lines.extend([
+        "",
+        "[unverified]",
         "[[Category:Blue Railroad]]",
         "[[Category:Leaderboards]]",
+        "[[Category:Pages with unverified bot claims]]",
     ])
 
     return "\n".join(lines)

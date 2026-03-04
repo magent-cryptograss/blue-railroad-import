@@ -22,6 +22,7 @@ def generate_template_call(
         f"|contract_version={'V2' if token.is_v2 else 'V1'}",
         f"|thumbnail={thumbnail}",
         f"|maybelle_pinned={'yes' if maybelle_pinned else 'no'}",
+        "|status=proposed",
     ]
 
     # Version-specific fields
